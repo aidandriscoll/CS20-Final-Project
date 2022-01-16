@@ -25,8 +25,18 @@ public class UX {
             if (usrIn.contains("student") || usrIn.equals("1")) {
                 // STUDENT
                 System.out.println("Welcome Student.");
-                System.out.println("What is your name (first and last)?");
-                String studUsrName = wordScan.nextLine();
+                int studIndex;
+                while (true) {
+                    System.out.println("What is your name (first and last)?");
+                    String studUsrName = wordScan.nextLine();
+                    studIndex = operations.findIndex(studUsrName);
+                    if (studIndex != -1) {
+                        break;
+                    } else {
+                        System.out.println(
+                                "Unable to find a student by the name of: " + studUsrName + ".\nPlease try again.");
+                    }
+                }
                 while (true) {
                     System.out.println(
                             "- - - - - - - - - - - - - - - - - - - - - -\nLogged in as Student.\nPlease make your task selection");
@@ -45,18 +55,7 @@ public class UX {
                     switch (studModeSelect) {
                         case 1:
                             // view grade
-                            while (true) {
-                                System.out.println("Which class are you looking for your grade in?");
-                                usrIn = wordScan.nextLine();
-                                System.out.println(operations.viewGrade(studUsrName, usrIn));
-                                System.out.println("Would you like to check your grade in another class?");
-                                usrIn = wordScan.nextLine().toLowerCase();
-                                if (usrIn.contains("no")) {
-                                    break;
-                                } else {
-                                    System.out.println();
-                                }
-                            }
+                            System.out.println(operations.viewGrade(studIndex));
                             System.out.println();
                             break;
                         case 2:
@@ -67,11 +66,18 @@ public class UX {
                             break;
                     }
                     usrIn = "";
+                    if (closeSesson == true) {
+                        System.out.println(
+                                "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n");
+                        usrIn = "";
+                        break;
+                    }
                     if (closeSesson == false) {
                         System.out.println("Would you like to make another selection?");
                         usrIn = wordScan.nextLine().toLowerCase();
                         if (usrIn.contains("no")) {
-                            System.out.println();
+                            System.out.println(
+                                    "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n");
                             usrIn = "";
                             break;
                         }
@@ -110,17 +116,65 @@ public class UX {
                             System.out.println("Invalid response. Please enter a new selection.");
                         }
                     }
-                    String studName;
+                    int studIndex;
                     switch (teachModeSelect) {
                         case 1:
                             // View full table
                         case 2:
                             // View one stud
-                           
+
                         case 3:
                             // chng stud grade (manual)
+                            while (true) {
+                                System.out.println("What student's grade would you like to modify?");
+                                String studSet = wordScan.nextLine();
+                                while (true) {
+                                    studIndex = operations.findIndex(studSet);
+                                    System.out.println("Which class would you like to change their grade in?");
+                                    usrIn = wordScan.nextLine();
+                                    System.out.println("What would you like their average to be in " + usrIn + "?");
+                                    int gradeSet = numScan.nextInt();
+                                    operations.changeGrade(studIndex, usrIn, gradeSet);
+
+                                    System.out.println("Would you like to change another grade for " + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to change the grade for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 4:
                             // chng stud grade (calc)
+                            while (true) {
+                                System.out.println("What student's grade would you like to modify?");
+                                String studSet = wordScan.nextLine();
+                                while (true) {
+                                    studIndex = operations.findIndex(studSet);
+                                    System.out.println("Which class would you like to change their grade in?");
+                                    usrIn = wordScan.nextLine();
+                                    operations.calcGrade(studIndex, usrIn);
+
+                                    System.out.println("Would you like to change another grade for " + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to change the grade for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 5:
                             // log out
                             closeSesson = true;
@@ -173,7 +227,7 @@ public class UX {
                             // View full table
                         case 2:
                             // View one stud
-                            
+
                             break;
                         case 3:
                             // edit stud info
@@ -181,6 +235,32 @@ public class UX {
                             // edit stud class
                         case 5:
                             // chng stud grade (manual)
+                            while (true) {
+                                System.out.println("What student's grade would you like to modify?");
+                                String studSet = wordScan.nextLine();
+                                int studIndex;
+                                while (true) {
+                                    studIndex = operations.findIndex(studSet);
+                                    System.out.println("Which class would you like to change their grade in?");
+                                    usrIn = wordScan.nextLine();
+                                    System.out.println("What would you like their average to be in " + usrIn + "?");
+                                    int gradeSet = numScan.nextInt();
+                                    operations.changeGrade(studIndex, usrIn, gradeSet);
+
+                                    System.out.println("Would you like to change another grade for " + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to change the grade for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 6:
                             // chng stud grade (calc)
                         case 7:
