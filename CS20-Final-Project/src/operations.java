@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class operations {
-    public static Scanner usrScan = new Scanner(System.in);
+    public static Scanner wordScan = new Scanner(System.in);
+    public static Scanner numScan = new Scanner(System.in);
     public static String usrIn;
 
     // Student Names
@@ -20,9 +21,10 @@ public class operations {
     public static int[] grades4 = { 70 };
 
     // Student Information
-    public static String[] phoneNum = { "123" };
-    public static String[] email = { "example@example.com" };
-    public static String[] address = { "Example" };
+    public static String[] phoneNums = { "123" };
+    public static String[] emails = { "example@example.com" };
+    public static String[] addresses = { "Example" };
+    public static String[] yearsOfSchool = { "11" };
 
     // Teacher Names
     public static String[] teachers1 = { "Teacher1" };
@@ -74,11 +76,11 @@ public class operations {
     // Change Student Grade (Calc. Average)
     public static void calcGrade(int indexIn, String classIn) {
         System.out.println("How many assignments would you like to calculate the average from?");
-        int assignCount = usrScan.nextInt();
+        int assignCount = wordScan.nextInt();
         double markTotal = 0;
         for (int i = 0; i < assignCount; i++) {
             System.out.println("What is the mark for assignment #" + i + "?");
-            markTotal = markTotal + usrScan.nextDouble();
+            markTotal = markTotal + wordScan.nextDouble();
         }
         int avg = (int) Math.round((markTotal / assignCount));
         if (classes1[indexIn].equals(classIn)) {
@@ -98,4 +100,93 @@ public class operations {
                     .println("Student " + names[indexIn] + " is not enroled in: " + classIn + ".\n Please try again.");
         }
     }// e psv calcGrade
+
+    // STUDENT USER edit information
+    public static void studEditInfo(int indexIn) {
+        System.out.println(
+                "Which information would you like to edit? \n1. Name\n2. Phone Number\n3. Email\n4. Address\nPlease make a selection: ");
+        int usrSelection = numScan.nextInt();
+        while (true) {
+            usrSelection = numScan.nextInt();
+            if (usrSelection >= 1 && usrSelection <= 4) {
+                break;
+            } else {
+                System.out.println("Invalid response. Please enter a new selection.");
+            }
+        }
+        switch (usrSelection) {
+            case 1:
+                //Name
+                System.out.println("What would you like your name to be set to?");
+                usrIn = wordScan.nextLine();
+                names[indexIn] = usrIn;
+                break;
+            case 2:
+            //Phone #
+                System.out.println("What is your new phone number?");
+                usrIn = wordScan.nextLine();
+                phoneNums[indexIn] = usrIn;
+                break;
+            case 3:
+            //Email
+                System.out.println("What is your new email?");
+                usrIn = wordScan.nextLine();
+                emails[indexIn] = usrIn;
+                break;
+            case 4:
+            //Address
+                System.out.println("What is your new address?");
+                usrIn = wordScan.nextLine();
+                addresses[indexIn] = usrIn;
+                break;
+        }
+    }// e psv studEditInfo
+
+    // STUDENT USER edit information
+    public static void adminEditInfo(int indexIn) {
+        System.out.println(
+            "Which information would you like to edit? \n1. Name\n2. Phone Number\n3. Email\n4. Address\n5. Years of schooling\nPlease make a selection: ");
+    int usrSelection = numScan.nextInt();
+    while (true) {
+        usrSelection = numScan.nextInt();
+        if (usrSelection >= 1 && usrSelection <= 4) {
+            break;
+        } else {
+            System.out.println("Invalid response. Please enter a new selection.");
+        }
+    }
+    switch (usrSelection) {
+        case 1:
+            //Name
+            System.out.println("What would you like the new name to be set to?");
+            usrIn = wordScan.nextLine();
+            names[indexIn] = usrIn;
+            break;
+        case 2:
+        //Phone #
+            System.out.println("What is the new phone number for "+names[indexIn]+"?");
+            usrIn = wordScan.nextLine();
+            phoneNums[indexIn] = usrIn;
+            break;
+        case 3:
+        //Email
+            System.out.println("What is the new email for "+names[indexIn]+"?");
+            usrIn = wordScan.nextLine();
+            emails[indexIn] = usrIn;
+            break;
+        case 4:
+        //Address
+            System.out.println("What is the new address for "+names[indexIn]+"?");
+            usrIn = wordScan.nextLine();
+            addresses[indexIn] = usrIn;
+            break;
+        case 5:
+        //Years of Schooling
+            System.out.println("How many years of schooling has "+names[indexIn]+" had?");
+            usrIn = wordScan.nextLine();
+            yearsOfSchool[indexIn] = usrIn;
+            break;
+    }
+    }// e psv adminEditInfo
+
 }// e pc operations.j

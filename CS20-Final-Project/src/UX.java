@@ -60,6 +60,14 @@ public class UX {
                             break;
                         case 2:
                             // edit stud info
+                            while (true) {
+                                operations.studEditInfo(studIndex);
+                                System.out.println("Would you like to edit another piece of your student information?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
                         case 3:
                             // log out
                             closeSesson = true;
@@ -116,7 +124,6 @@ public class UX {
                             System.out.println("Invalid response. Please enter a new selection.");
                         }
                     }
-                    int studIndex;
                     switch (teachModeSelect) {
                         case 1:
                             // View full table
@@ -126,10 +133,21 @@ public class UX {
                         case 3:
                             // chng stud grade (manual)
                             while (true) {
-                                System.out.println("What student's grade would you like to modify?");
-                                String studSet = wordScan.nextLine();
+                                int studIndex;
+                                String studSet;
                                 while (true) {
+                                    System.out.println("What student's grade would you like to modify?");
+                                    studSet = wordScan.nextLine();
                                     studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
                                     System.out.println("Which class would you like to change their grade in?");
                                     usrIn = wordScan.nextLine();
                                     System.out.println("What would you like their average to be in " + usrIn + "?");
@@ -153,10 +171,21 @@ public class UX {
                         case 4:
                             // chng stud grade (calc)
                             while (true) {
-                                System.out.println("What student's grade would you like to modify?");
-                                String studSet = wordScan.nextLine();
+                                int studIndex;
+                                String studSet;
                                 while (true) {
+                                    System.out.println("What student's grade would you like to modify?");
+                                    studSet = wordScan.nextLine();
                                     studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
                                     System.out.println("Which class would you like to change their grade in?");
                                     usrIn = wordScan.nextLine();
                                     operations.calcGrade(studIndex, usrIn);
@@ -211,7 +240,7 @@ public class UX {
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - \nLogged in as Admin.");
                     // MODE SELECTION
                     System.out.println(
-                            "Please make your task selection\n1. View entire database\n2. View information for a specific student\n3. Edit Student information\n4. Enrol/modify classes for a student.\n5. Change a student’s grade (manual)\n6. Change a student’s grade (calculate avg.)\n7. Add a new student\n8. End session and log out\nPlease choose your selection (type the number of the desired option):");
+                            "Please make your task selection\n1. View entire database\n2. View information for a specific student\n3. Edit Student information\n4. Enrol/modify class for a student.\n5. Change a student’s grade (manual)\n6. Change a student’s grade (calculate avg.)\n7. Add a new student\n8. End session and log out\nPlease choose your selection (type the number of the desired option):");
                     int adminModeSelect;
                     while (true) {
                         adminModeSelect = numScan.nextInt();
@@ -221,26 +250,67 @@ public class UX {
                             System.out.println("Invalid response. Please enter a new selection.");
                         }
                     }
-                    String studName;
                     switch (adminModeSelect) {
                         case 1:
                             // View full table
+
                         case 2:
                             // View one stud
 
                             break;
                         case 3:
                             // edit stud info
+                            while (true) {
+                                int studIndex;
+                                String studSet;
+                                while (true) {
+                                    System.out.println("What student's grade would you like to modify?");
+                                    studSet = wordScan.nextLine();
+                                    studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
+                                    operations.adminEditInfo(studIndex);
+                                    System.out
+                                            .println("Would you like to edit another piece of student information for "
+                                                    + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to edit another student's information?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
                         case 4:
                             // edit stud class
                         case 5:
                             // chng stud grade (manual)
                             while (true) {
-                                System.out.println("What student's grade would you like to modify?");
-                                String studSet = wordScan.nextLine();
                                 int studIndex;
+                                String studSet;
                                 while (true) {
+                                    System.out.println("What student's grade would you like to modify?");
+                                    studSet = wordScan.nextLine();
                                     studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
                                     System.out.println("Which class would you like to change their grade in?");
                                     usrIn = wordScan.nextLine();
                                     System.out.println("What would you like their average to be in " + usrIn + "?");
@@ -263,6 +333,41 @@ public class UX {
                             break;
                         case 6:
                             // chng stud grade (calc)
+                            while (true) {
+                                int studIndex;
+                                String studSet;
+                                while (true) {
+                                    System.out.println("What student's grade would you like to modify?");
+                                    studSet = wordScan.nextLine();
+                                    studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
+                                    studIndex = operations.findIndex(studSet);
+                                    System.out.println("Which class would you like to change their grade in?");
+                                    usrIn = wordScan.nextLine();
+                                    operations.calcGrade(studIndex, usrIn);
+
+                                    System.out.println("Would you like to change another grade for " + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to change the grade for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 7:
                             // add new stud
                         case 8:
