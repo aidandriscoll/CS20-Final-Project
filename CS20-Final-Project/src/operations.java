@@ -21,8 +21,14 @@ public class operations {
 
     // Student Information
     public static String[] phoneNum = { "123" };
-    public static String[] email = { "timcook@apple.com" };
-    public static String[] address = { "1 Infinite Loop" };
+    public static String[] email = { "example@example.com" };
+    public static String[] address = { "Example" };
+
+    // Teacher Names
+    public static String[] teachers1 = { "Teacher1" };
+    public static String[] teachers2 = { "Teacher2" };
+    public static String[] teachers3 = { "Teacher3" };
+    public static String[] teachers4 = { "Teacher4" };
 
     // - - - - - - - - - - - - - - - - - - - - - -
     // Functions
@@ -36,7 +42,7 @@ public class operations {
             }
         }
         return out;
-    }//e psi findIndex
+    }// e psi findIndex
 
     // View Grade
     public static String viewGrade(int indexIn) {
@@ -49,20 +55,21 @@ public class operations {
     public static void changeGrade(int indexIn, String classIn, int avgIn) {
         if (classes1[indexIn].equals(classIn)) {
             grades1[indexIn] = avgIn;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avgIn+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avgIn + ".");
         } else if (classes2[indexIn].equals(classIn)) {
             grades2[indexIn] = avgIn;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avgIn+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avgIn + ".");
         } else if (classes3[indexIn].equals(classIn)) {
             grades3[indexIn] = avgIn;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avgIn+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avgIn + ".");
         } else if (classes4[indexIn].equals(classIn)) {
             grades4[indexIn] = avgIn;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avgIn+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avgIn + ".");
         } else {
-            System.out.println("Student "+names[indexIn]+" is not enroled in: "+classIn+".\n Please try again.");
+            System.out
+                    .println("Student " + names[indexIn] + " is not enroled in: " + classIn + ".\n Please try again.");
         }
-    }//e psv changeGrade
+    }// e psv changeGrade
 
     // Change Student Grade (Calc. Average)
     public static void calcGrade(int indexIn, String classIn) {
@@ -76,18 +83,19 @@ public class operations {
         int avg = (int) Math.round((markTotal / assignCount));
         if (classes1[indexIn].equals(classIn)) {
             grades1[indexIn] = avg;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avg+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avg + ".");
         } else if (classes2[indexIn].equals(classIn)) {
             grades2[indexIn] = avg;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avg+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avg + ".");
         } else if (classes3[indexIn].equals(classIn)) {
             grades3[indexIn] = avg;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avg+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avg + ".");
         } else if (classes4[indexIn].equals(classIn)) {
             grades4[indexIn] = avg;
-            System.out.println(names[indexIn]+"'s grade in "+classIn+" is now: "+avg+".");
+            System.out.println(names[indexIn] + "'s grade in " + classIn + " is now: " + avg + ".");
         } else {
-            System.out.println("Student "+names[indexIn]+" is not enroled in: "+classIn+".\n Please try again.");
+            System.out
+                    .println("Student " + names[indexIn] + " is not enroled in: " + classIn + ".\n Please try again.");
         }
     }// e psv calcGrade
 }// e pc operations.j
