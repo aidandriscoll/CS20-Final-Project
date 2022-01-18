@@ -69,6 +69,8 @@ public class UX {
                                     break;
                                 }
                             }
+                            System.out.println();
+                            break;
                         case 3:
                             // log out
                             closeSesson = true;
@@ -127,7 +129,9 @@ public class UX {
                     switch (teachModeSelect) {
                         case 1:
                             // View full table
-
+                            operations.printTable();
+                            System.out.println();
+                            break;
                         case 2:
                             // View one stud
                             while (true) {
@@ -285,7 +289,9 @@ public class UX {
                     switch (adminModeSelect) {
                         case 1:
                             // View full table
-
+                            operations.printTable();
+                            System.out.println();
+                            break;
                         case 2:
                             // View one stud
                             while (true) {
@@ -346,6 +352,8 @@ public class UX {
                                     break;
                                 }
                             }
+                            System.out.println();
+                            break;
                         case 4:
                             // edit stud class
                             while (true) {
@@ -456,6 +464,16 @@ public class UX {
                             break;
                         case 7:
                             // add new stud
+                            while(true){
+                                operations.addStudent();
+                                System.out.println("Would you like to add another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 8:
                             // log out
                             closeSesson = true;
@@ -485,6 +503,7 @@ public class UX {
             } else {
                 System.out.println("Invalid selection. Please try again.");
             }
+            operations.saveAll();
         }
     }// e psv main
 }// e pc UX.j
