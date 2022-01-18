@@ -258,7 +258,14 @@ public class operations {
 
     // Add Student
     public static void addStudent() {
-
+        int newStudentIndex; 
+        for (int i = 0; i < names.length; i++) {
+            if () {
+                if(i<newStudentIndex){
+                    newStudentIndex=i;
+                }
+            }
+        }
     }// e psv addStudent
 
     public static void saveAll() {
