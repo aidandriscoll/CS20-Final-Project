@@ -7,6 +7,7 @@ public class UX {
         Scanner numScan = new Scanner(System.in);
         Scanner wordScan = new Scanner(System.in);
         String usrIn;
+        String sessionEnded = "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n";
 
         String teacherPassword = "AppleADay";
         String adminPassword = "drowssap";
@@ -76,7 +77,7 @@ public class UX {
                     usrIn = "";
                     if (closeSesson == true) {
                         System.out.println(
-                                "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n");
+                                sessionEnded);
                         usrIn = "";
                         break;
                     }
@@ -85,7 +86,7 @@ public class UX {
                         usrIn = wordScan.nextLine().toLowerCase();
                         if (usrIn.contains("no")) {
                             System.out.println(
-                                    "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n");
+                                    sessionEnded);
                             usrIn = "";
                             break;
                         }
@@ -127,9 +128,34 @@ public class UX {
                     switch (teachModeSelect) {
                         case 1:
                             // View full table
+
                         case 2:
                             // View one stud
-
+                            while (true) {
+                                int studIndex;
+                                String studSet;
+                                while (true) {
+                                    System.out.println("What student's profile would you like to view?");
+                                    studSet = wordScan.nextLine();
+                                    studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                System.out.println(operations.viewGrade(studIndex));
+                                System.out.println(operations.viewInfo(studIndex));
+                                System.out.println("Would you like to view the information for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 3:
                             // chng stud grade (manual)
                             while (true) {
@@ -209,11 +235,19 @@ public class UX {
                             closeSesson = true;
                             break;
                     }
+                    usrIn = "";
+                    if (closeSesson == true) {
+                        System.out.println(
+                                sessionEnded);
+                        usrIn = "";
+                        break;
+                    }
                     if (closeSesson == false) {
                         System.out.println("Would you like to make another selection?");
                         usrIn = wordScan.nextLine().toLowerCase();
                         if (usrIn.contains("no")) {
-                            System.out.println();
+                            System.out.println(
+                                    sessionEnded);
                             usrIn = "";
                             break;
                         }
@@ -256,7 +290,30 @@ public class UX {
 
                         case 2:
                             // View one stud
-
+                            while (true) {
+                                int studIndex;
+                                String studSet;
+                                while (true) {
+                                    System.out.println("What student's profile would you like to view?");
+                                    studSet = wordScan.nextLine();
+                                    studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                operations.viewGrade(studIndex);
+                                operations.viewInfo(studIndex);
+                                System.out.println("Would you like to view the information for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
                             break;
                         case 3:
                             // edit stud info
@@ -293,6 +350,37 @@ public class UX {
                             }
                         case 4:
                             // edit stud class
+                            while (true) {
+                                int studIndex;
+                                String studSet;
+                                while (true) {
+                                    System.out.println("What student's classes would you like to modify?");
+                                    studSet = wordScan.nextLine();
+                                    studIndex = operations.findIndex(studSet);
+                                    if (studIndex != -1) {
+                                        break;
+                                    } else {
+                                        System.out.println(
+                                                "Unable to find a student by the name of: " + studSet
+                                                        + ".\nPlease try again.");
+                                    }
+                                }
+                                while (true) {
+                                    operations.editClass(studIndex);
+                                    System.out.println("Would you like to edit another class for " + studSet + "?");
+                                    usrIn = wordScan.nextLine().toLowerCase();
+                                    if (usrIn.contains("no")) {
+                                        break;
+                                    }
+                                }
+                                System.out.println("Would you like to change the grade for another student?");
+                                usrIn = wordScan.nextLine().toLowerCase();
+                                if (usrIn.contains("no")) {
+                                    break;
+                                }
+                            }
+                            System.out.println();
+                            break;
                         case 5:
                             // chng stud grade (manual)
                             while (true) {
@@ -375,11 +463,19 @@ public class UX {
                             closeSesson = true;
                             break;
                     }
+                    usrIn = "";
+                    if (closeSesson == true) {
+                        System.out.println(
+                                sessionEnded);
+                        usrIn = "";
+                        break;
+                    }
                     if (closeSesson == false) {
                         System.out.println("Would you like to make another selection?");
                         usrIn = wordScan.nextLine().toLowerCase();
                         if (usrIn.contains("no")) {
-                            System.out.println();
+                            System.out.println(
+                                    sessionEnded);
                             usrIn = "";
                             break;
                         }
