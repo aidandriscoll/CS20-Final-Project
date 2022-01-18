@@ -52,6 +52,11 @@ public class operations {
                 + classes2[indexIn] + ":    " + grades2[indexIn] + "\n" + classes3[indexIn] + ":    " + grades3[indexIn]
                 + "\n" + classes4[indexIn] + ":    " + grades4[indexIn] + "\n");
     }// e psS viewGrade
+    
+    // View Student Information
+    public static String viewInfo(int indexIn) {
+        return ("Years of Schooling: "+yearsOfSchool[indexIn]+"\nPhone Number: "+phoneNums[indexIn]+"\nEmail: "+emails[indexIn]+"\nAddress: "+addresses[indexIn]);
+    }// e psS viewInfo
 
     // Change Student Grade (manual)
     public static void changeGrade(int indexIn, String classIn, int avgIn) {
@@ -188,5 +193,10 @@ public class operations {
             break;
     }
     }// e psv adminEditInfo
+
+    // Edit Classes
+    public static void editClass(int indexIn){
+
+    }//e psv editClass
 
 }// e pc operations.j
