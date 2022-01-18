@@ -76,8 +76,7 @@ public class UX {
                     }
                     usrIn = "";
                     if (closeSesson == true) {
-                        System.out.println(
-                                sessionEnded);
+                        System.out.println(sessionEnded);
                         usrIn = "";
                         break;
                     }
@@ -237,8 +236,7 @@ public class UX {
                     }
                     usrIn = "";
                     if (closeSesson == true) {
-                        System.out.println(
-                                sessionEnded);
+                        System.out.println(sessionEnded);
                         usrIn = "";
                         break;
                     }
@@ -465,8 +463,7 @@ public class UX {
                     }
                     usrIn = "";
                     if (closeSesson == true) {
-                        System.out.println(
-                                sessionEnded);
+                        System.out.println(sessionEnded);
                         usrIn = "";
                         break;
                     }
