@@ -50,22 +50,23 @@ public class operations {
     public static void viewGrade(int indexIn) {
         System.out.println("Student: " + names[indexIn]);
         System.out.printf("%-15s %15s %03d",
-                classes1[indexIn], "("+teachers1[indexIn]+"):", grades1[indexIn]);
-        System.out.println(); 
+                classes1[indexIn], "(" + teachers1[indexIn] + "):", grades1[indexIn]);
+        System.out.println();
         System.out.printf("%-15s %15s %03d",
-                classes2[indexIn], "("+teachers2[indexIn]+"):", grades2[indexIn]);
-        System.out.println(); 
+                classes2[indexIn], "(" + teachers2[indexIn] + "):", grades2[indexIn]);
+        System.out.println();
         System.out.printf("%-15s %15s %03d",
-                classes3[indexIn], "("+teachers3[indexIn]+"):", grades3[indexIn]);
-        System.out.println(); 
+                classes3[indexIn], "(" + teachers3[indexIn] + "):", grades3[indexIn]);
+        System.out.println();
         System.out.printf("%-15s %15s %03d",
-                classes4[indexIn], "("+teachers4[indexIn]+"):", grades4[indexIn]);
-        System.out.println(); 
+                classes4[indexIn], "(" + teachers4[indexIn] + "):", grades4[indexIn]);
+        System.out.println();
     }// e psS viewGrade
 
     // View Student Information
     public static String viewInfo(int indexIn) {
-        return ("Years of Schooling:  " + yearsOfSchool[indexIn] + "\nPhone Number:        " + phoneNums[indexIn] + "\nEmail:               "
+        return ("Years of Schooling:  " + yearsOfSchool[indexIn] + "\nPhone Number:        " + phoneNums[indexIn]
+                + "\nEmail:               "
                 + emails[indexIn] + "\nAddress:             " + addresses[indexIn]);
     }// e psS viewInfo
 
@@ -95,7 +96,7 @@ public class operations {
         int assignCount = wordScan.nextInt();
         double markTotal = 0;
         for (int i = 0; i < assignCount; i++) {
-            System.out.println("What is the mark for assignment #" + (i+1) + "?");
+            System.out.println("What is the mark for assignment #" + (i + 1) + "?");
             markTotal = markTotal + wordScan.nextDouble();
         }
         int avg = (int) Math.round((markTotal / assignCount));
@@ -134,26 +135,22 @@ public class operations {
             case 1:
                 // Name
                 System.out.println("What would you like your name to be set to?");
-                usrIn = wordScan.nextLine();
-                names[indexIn] = usrIn;
+                names[indexIn] = wordScan.nextLine();
                 break;
             case 2:
                 // Phone #
                 System.out.println("What is your new phone number?");
-                usrIn = wordScan.nextLine();
-                phoneNums[indexIn] = usrIn;
+                phoneNums[indexIn] = wordScan.nextLine();
                 break;
             case 3:
                 // Email
                 System.out.println("What is your new email?");
-                usrIn = wordScan.nextLine();
-                emails[indexIn] = usrIn;
+                emails[indexIn] = wordScan.nextLine();
                 break;
             case 4:
                 // Address
                 System.out.println("What is your new address?");
-                usrIn = wordScan.nextLine();
-                addresses[indexIn] = usrIn;
+                addresses[indexIn] = wordScan.nextLine();
                 break;
         }
     }// e psv studEditInfo
@@ -175,26 +172,22 @@ public class operations {
             case 1:
                 // Name
                 System.out.println("What would you like the new name to be set to?");
-                usrIn = wordScan.nextLine();
-                names[indexIn] = usrIn;
+                names[indexIn] = wordScan.nextLine();
                 break;
             case 2:
                 // Phone #
                 System.out.println("What is the new phone number for " + names[indexIn] + "?");
-                usrIn = wordScan.nextLine();
-                phoneNums[indexIn] = usrIn;
+                phoneNums[indexIn] = wordScan.nextLine();
                 break;
             case 3:
                 // Email
                 System.out.println("What is the new email for " + names[indexIn] + "?");
-                usrIn = wordScan.nextLine();
-                emails[indexIn] = usrIn;
+                emails[indexIn] = wordScan.nextLine();
                 break;
             case 4:
                 // Address
                 System.out.println("What is the new address for " + names[indexIn] + "?");
-                usrIn = wordScan.nextLine();
-                addresses[indexIn] = usrIn;
+                addresses[indexIn] = wordScan.nextLine();
                 break;
             case 5:
                 // Years of Schooling
@@ -223,30 +216,34 @@ public class operations {
                 System.out.println(names[indexIn] + "'s 1st period class is currently: " + classes1[indexIn]
                         + "\nWould would you like their new class to be?");
                 classes1[indexIn] = wordScan.nextLine();
+                grades1[indexIn] = 0;
                 System.out.println("Who teaches " + classes1[indexIn] + "?");
                 teachers1[indexIn] = wordScan.nextLine();
                 break;
-            case 2:
+                case 2:
                 // Period 2
                 System.out.println(names[indexIn] + "'s 2nd period class is currently: " + classes2[indexIn]
-                        + "\nWould would you like their new class to be?");
+                + "\nWould would you like their new class to be?");
                 classes2[indexIn] = wordScan.nextLine();
+                grades2[indexIn] = 0;
                 System.out.println("Who teaches " + classes2[indexIn] + "?");
                 teachers2[indexIn] = wordScan.nextLine();
                 break;
-            case 3:
+                case 3:
                 // Period 3
                 System.out.println(names[indexIn] + "'s 3rd period class is currently: " + classes3[indexIn]
-                        + "\nWould would you like their new class to be?");
+                + "\nWould would you like their new class to be?");
                 classes3[indexIn] = wordScan.nextLine();
+                grades3[indexIn] = 0;
                 System.out.println("Who teaches " + classes3[indexIn] + "?");
                 teachers3[indexIn] = wordScan.nextLine();
                 break;
-            case 4:
+                case 4:
                 // Period 4
                 System.out.println(names[indexIn] + "'s 4th period class is currently: " + classes4[indexIn]
-                        + "\nWould would you like their new class to be?");
+                + "\nWould would you like their new class to be?");
                 classes4[indexIn] = wordScan.nextLine();
+                grades4[indexIn] = 0;
                 System.out.println("Who teaches " + classes4[indexIn] + "?");
                 teachers4[indexIn] = wordScan.nextLine();
                 break;
@@ -256,9 +253,12 @@ public class operations {
 
     // Print Full Table
     public static void printTable() {
-        System.out.println("Full Database Table: \nYr:    Name:  P1:              P2:              P3:              P4:              Email:\n---------------------------------------------------------------------------------------------------");
+        System.out.println(
+                "Full Database Table: \nYr:    Name:  P1:              P2:              P3:              P4:              Email:\n---------------------------------------------------------------------------------------------------");
         for (int i = 0; i < names.length; i++) {
-            System.out.printf("%02d %10s %03d (%-10s) %03d (%-10s) %03d (%-10s) %03d (%-10s) %15s", yearsOfSchool[i], names[i], grades1[i], classes1[i], grades2[i], classes2[i], grades3[i], classes3[i], grades4[i], classes4[i], emails[i]);
+            System.out.printf("%02d %10s %03d (%-10s) %03d (%-10s) %03d (%-10s) %03d (%-10s) %15s", yearsOfSchool[i],
+                    names[i], grades1[i], classes1[i], grades2[i], classes2[i], grades3[i], classes3[i], grades4[i],
+                    classes4[i], emails[i]);
             System.out.println();
         }
     }// e psv printTable

@@ -43,7 +43,7 @@ public class UX {
                             "- - - - - - - - - - - - - - - - - - - - - -\nLogged in as Student.\nPlease make your task selection");
                     // MODE SELECTION
                     System.out.println(
-                            "1. View your grades\n2. Edit your Student information\n3. End session and log out\nPlease choose your selection (type the number of the desired option):");
+                            "1. View your grades\n2. Edit your student information\n3. End session and log out\nPlease choose your selection (type the number of the desired option):");
                     int studModeSelect;
                     while (true) {
                         studModeSelect = numScan.nextInt();
