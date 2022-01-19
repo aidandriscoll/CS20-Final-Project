@@ -10,7 +10,7 @@ public class UX {
         String sessionEnded = "Session Ended. \n- - - - - - - - - - - - - - - - - - - - - -\n- - - - - - - - - - - - - - - - - - - - - -\n";
 
         String teacherPassword = "AppleADay";
-        String adminPassword = "drowssap";
+        String adminPassword = "AdminAllDay";
         boolean closeSesson = false;
 
         // INTRO
@@ -20,7 +20,7 @@ public class UX {
         // USER LOGIN
         while (true) {
             System.out.println(
-                    "Select which user you would like to log in as?\n1. Student\n2. Teacher\n3. Admin\nType your selection below:");
+                    "Select which user you would like to log in as?\n1. Student\n2. Teacher\n3. Admin\n4. Quit\nType your selection below:");
             usrIn = wordScan.nextLine().toLowerCase();
             closeSesson = false;
             if (usrIn.contains("student") || usrIn.equals("1")) {
@@ -28,7 +28,7 @@ public class UX {
                 System.out.println("Welcome Student.");
                 int studIndex;
                 while (true) {
-                    System.out.println("What is your name (first and last)?");
+                    System.out.println("What is your name (first and last inital.)?");
                     String studUsrName = wordScan.nextLine();
                     studIndex = operations.findIndex(studUsrName);
                     if (studIndex != -1) {
@@ -56,7 +56,7 @@ public class UX {
                     switch (studModeSelect) {
                         case 1:
                             // view grade
-                            System.out.println(operations.viewGrade(studIndex));
+                            operations.viewGrade(studIndex);
                             System.out.println();
                             break;
                         case 2:
@@ -116,7 +116,7 @@ public class UX {
                             "- - - - - - - - - - - - - - - - - - - - - -\nLogged in as Teacher.\nPlease make your task selection");
                     // MODE SELECTION
                     System.out.println(
-                            "1. View entire database\n2. View information for a specific student\n3. Change a student’s grade (manual)\n4. Change a student’s grade (calculate avg.)\n5. End session and log out\nPlease choose your selection (type the number of the desired option)");
+                            "1. View entire database\n2. View information for a specific student\n3. Change a student's grade (manual)\n4. Change a student's grade (calculate avg.)\n5. End session and log out\nPlease choose your selection (type the number of the desired option)");
                     int teachModeSelect;
                     while (true) {
                         teachModeSelect = numScan.nextInt();
@@ -149,7 +149,7 @@ public class UX {
                                                         + ".\nPlease try again.");
                                     }
                                 }
-                                System.out.println(operations.viewGrade(studIndex));
+                                operations.viewGrade(studIndex);
                                 System.out.println(operations.viewInfo(studIndex));
                                 System.out.println("Would you like to view the information for another student?");
                                 usrIn = wordScan.nextLine().toLowerCase();
@@ -276,7 +276,7 @@ public class UX {
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - \nLogged in as Admin.");
                     // MODE SELECTION
                     System.out.println(
-                            "Please make your task selection\n1. View entire database\n2. View information for a specific student\n3. Edit Student information\n4. Enrol/modify class for a student.\n5. Change a student’s grade (manual)\n6. Change a student’s grade (calculate avg.)\n7. Add a new student\n8. End session and log out\nPlease choose your selection (type the number of the desired option):");
+                            "Please make your task selection\n1. View entire database\n2. View information for a specific student\n3. Edit Student information\n4. Enrol/modify class for a student.\n5. Change a student's grade (manual)\n6. Change a student's grade (calculate avg.)\n7. Add a new student\n8. End session and log out\nPlease choose your selection (type the number of the desired option):");
                     int adminModeSelect;
                     while (true) {
                         adminModeSelect = numScan.nextInt();
@@ -310,7 +310,7 @@ public class UX {
                                     }
                                 }
                                 operations.viewGrade(studIndex);
-                                operations.viewInfo(studIndex);
+                                System.out.println(operations.viewInfo(studIndex));
                                 System.out.println("Would you like to view the information for another student?");
                                 usrIn = wordScan.nextLine().toLowerCase();
                                 if (usrIn.contains("no")) {
@@ -379,7 +379,7 @@ public class UX {
                                         break;
                                     }
                                 }
-                                System.out.println("Would you like to change the grade for another student?");
+                                System.out.println("Would you like to change the class for another student?");
                                 usrIn = wordScan.nextLine().toLowerCase();
                                 if (usrIn.contains("no")) {
                                     break;
@@ -464,7 +464,7 @@ public class UX {
                             break;
                         case 7:
                             // add new stud
-                            while(true){
+                            while (true) {
                                 operations.addStudent();
                                 System.out.println("Would you like to add another student?");
                                 usrIn = wordScan.nextLine().toLowerCase();
@@ -500,7 +500,11 @@ public class UX {
                         break;
                     }
                 }
-            } else {
+            } else if (usrIn.contains("quit") || usrIn.equals("4")) {
+                operations.saveAll();
+                System.out.println("Thank you for using the student database software.");
+                break;
+            }else {
                 System.out.println("Invalid selection. Please try again.");
             }
             operations.saveAll();
